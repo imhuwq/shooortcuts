@@ -1,0 +1,13 @@
+# for build
+*.egg-info
+build/
+dist/
+
+# for python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# for local dev
+dev.*

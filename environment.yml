@@ -1,0 +1,10 @@
+name: git_cmd
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.6
+  - pip
+  - gitpython>=3.1.0
+  - pip:
+    - -e .
