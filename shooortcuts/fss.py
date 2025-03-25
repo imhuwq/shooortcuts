@@ -7,6 +7,14 @@ from .common import TEMP_COMMIT_PREFIX, get_repo, get_version_from_last_commit, 
 def fss_command():
     repo = get_repo()
 
+    # Save current changes if any
+    if repo.is_dirty(untracked_files=True):
+        repo.git.add(".")
+        version = get_version_from_last_commit()
+        message = f"{TEMP_COMMIT_PREFIX} {version}"
+        repo.index.commit(message)
+        print("Saved current changes as temporary commit")
+
     try:
         current = repo.head.commit
     except (ValueError, TypeError):

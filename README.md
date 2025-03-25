@@ -47,6 +47,35 @@ Behavior:
    - Creates new commit replacing all temporary commits
    - Example: `temp1 -> temp2` becomes `new`
 
+### `dss` (Drop State to Stash)
+
+Saves uncommitted changes to stash:
+
+    $ dss
+    Saved changes to stash
+
+Behavior:
+- If there are no changes: prints "No changes to drop"
+- Otherwise: saves all changes to stash with message "gitCMD: auto stash"
+- Changes can be recovered later using `git stash pop` or `git stash apply`
+
+### `fss` (Fuck off Saved State)
+
+Moves temporary commits to a new branch and resets main branch:
+
+    $ fss
+    Created new branch: temp/abc123_250325
+    Reset main to last non-temp commit
+
+Behavior:
+1. If no commits exist: prints "No commits to fuck off"
+2. If all commits are temporary: prints warning and exits
+3. If no temporary commits: prints "No temporary commits to fuck off"
+4. Otherwise:
+   - Creates new branch `temp/$version_YYMMDD`
+   - Moves all temporary commits to new branch
+   - Resets main branch to last non-temporary commit
+
 ## Use Case
 
 Typical workflow:
