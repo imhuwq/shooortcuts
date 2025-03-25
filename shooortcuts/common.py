@@ -11,7 +11,9 @@ def get_repo():
         repo = Repo(".", search_parent_directories=True)
         return repo
     except InvalidGitRepositoryError:
-        return Repo.init(".")
+        print("Error: Not a git repository")
+        print("Please run 'git init' first")
+        raise
 
 
 def get_version_from_last_commit():
