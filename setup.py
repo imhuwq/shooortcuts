@@ -14,6 +14,7 @@ setup(
         "console_scripts": [
             "ass=shooortcuts.ass:ass_command",
             "css=shooortcuts.css:css_command",
+            "dss=shooortcuts.dss:dss_command",
         ],
     },
     author="imhuwq",
