@@ -12,8 +12,7 @@ def get_repo():
         return repo
     except InvalidGitRepositoryError:
         print("Error: Not a git repository")
-        print("Please run 'git init' first")
-        raise
+        exit(1)
 
 
 def get_version_from_last_commit():
