@@ -64,14 +64,17 @@ Behavior:
 Moves temporary commits to a new branch and resets main branch:
 
     $ fss
+    Saved current changes as temporary commit    # If there are uncommitted changes
     Created new branch: temp/abc123_250325
     Reset main to last non-temp commit
 
 Behavior:
-1. If no commits exist: prints "No commits to fuck off"
-2. If all commits are temporary: prints warning and exits
-3. If no temporary commits: prints "No temporary commits to fuck off"
-4. Otherwise:
+1. If there are uncommitted changes:
+   - Creates a temporary commit with current changes
+2. If no commits exist: prints "No commits to fuck off"
+3. If all commits are temporary: prints warning and exits
+4. If no temporary commits: prints "No temporary commits to fuck off"
+5. Otherwise:
    - Creates new branch `temp/$version_YYMMDD`
    - Moves all temporary commits to new branch
    - Resets main branch to last non-temporary commit
