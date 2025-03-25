@@ -3,6 +3,8 @@ import re
 from git import Repo
 from git.exc import InvalidGitRepositoryError
 
+TEMP_COMMIT_PREFIX = "gitCMD: auto temp commit for"
+
 
 def get_repo():
     try:
@@ -22,7 +24,7 @@ def get_version_from_last_commit():
         last_commit = repo.head.commit
 
         # Check if last commit was from gss
-        match = re.match(r"gitCMD: auto temp commit for (.*)", last_commit.message)
+        match = re.match(f"{TEMP_COMMIT_PREFIX} (.*)", last_commit.message)
 
         if match:
             return match.group(1)

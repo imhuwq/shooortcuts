@@ -15,6 +15,7 @@ setup(
             "ass=shooortcuts.ass:ass_command",
             "css=shooortcuts.css:css_command",
             "dss=shooortcuts.dss:dss_command",
+            "fss=shooortcuts.fss:fss_command",
         ],
     },
     author="imhuwq",
