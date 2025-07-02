@@ -42,20 +42,17 @@ def fss_command():
         return
 
     # Get version and create new branch
+    prev_branch = repo.active_branch.name
     version = get_version_from_last_commit()
-    new_branch = f"temp/{version}_{datetime.now().strftime('%y%m%d')}"
+    new_branch = f"temp/{version}_{datetime.now().strftime('%y%m%d-%H%M%S')}"
 
     # Create and switch to new branch
     repo.git.checkout("-b", new_branch)
     print(f"Created new branch: {new_branch}")
 
-    # Reset main branch to last non-temp commit
-    main_branch = repo.active_branch.name
-    repo.git.checkout(main_branch)
+    # return to previous branch
+    repo.git.checkout(prev_branch)
     repo.git.reset(non_temp_commit.hexsha)
-    print(f"Reset {main_branch} to last non-temp commit")
-
-    # return to main branch
-    repo.git.checkout(main_branch)
+    print(f"Reset {prev_branch} to last non-temp commit")
 
     print_git_log()
