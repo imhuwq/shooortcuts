@@ -55,4 +55,7 @@ def fss_command():
     repo.git.reset(non_temp_commit.hexsha)
     print(f"Reset {main_branch} to last non-temp commit")
 
+    # return to main branch
+    repo.git.checkout(main_branch)
+
     print_git_log()
