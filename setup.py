@@ -5,10 +5,11 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="shooortcuts",
-    version="0.2.3",
+    version="0.3.0",
     packages=find_packages(),
     install_requires=[
         "gitpython>=3.1.0",
+        "pillow==11.3.0",
     ],
     entry_points={
         "console_scripts": [
@@ -16,6 +17,7 @@ setup(
             "css=shooortcuts.css:css_command",
             "dss=shooortcuts.dss:dss_command",
             "fss=shooortcuts.fss:fss_command",
+            "rsimg=shooortcuts.rsimg:rsimg_command",
         ],
     },
     author="imhuwq",
